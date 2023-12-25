@@ -48,7 +48,7 @@ DeadOne | 死一 | WXPO
 TwoLiveTwo | 双活二 | 两个及以上 LiveTwo 或 DeadThree
 AllCategorys | 枚举数 | 创建数组用
 ### 计算权重
-根据对Ai的需求设置权重并使用上面的数据计算，算出该空位的权重并记录在二维数组 `int scoreMap[CELL_NUM+1][CELL_NUM+1]`;。当遍历完所有空位后，数组将记录了所有空位的权重。  
+根据对Ai的需求设置权重并使用上面的数据计算，算出该空位的权重并记录在二维数组 `int scoreMap[CELL_NUM+1][CELL_NUM+1]`。当遍历完所有空位后，数组将记录了所有空位的权重。  
 ### 选择下棋点
 计算 `scoreMap` 中的最大值，然后选出所有最大值的位置并随机挑选一个位置下棋。  
 至此Ai运算结束。  

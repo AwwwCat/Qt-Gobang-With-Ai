@@ -9,7 +9,7 @@
 需要 Qt 环境运行，本项目使用 `Qt 5.14.2` 环境，并使用 `Qt Creator 4.11.1 (Community)` 开发，相关资源可以前往[下载地址](https://download.qt.io/archive/qt/5.14/5.14.2/ "Qt 5.14.2 下载")自行下载环境。  
 具体相关环境如下：  
 * Qt 5.14.2 (mingw73_64)  
-* Qt 5.14.2 (msvc2017_64)  
+* Qt 5.14.2 (msvc2017_64)    
 下载后导入项目即可。  
 ## Ai逻辑  
 ### 周边类型运算
@@ -25,6 +25,26 @@ enum SingleTypes {
 * X 代表棋；  
 * W 代表和 X 相反的棋。  
 ### 具体连子类型判断
-根据上面的算法得到棋子周边的类型，通过组合得出棋子周边真正的类型。如□⚪
+根据上面的算法得到棋子周边的类型，通过组合得出棋子周边真正的类型。如在一条线上 `OXP` 和 `WXXP` 能组成 `OXPXXW`，为 `死三`；或在一条线上 `OXXP` 和 `OP` 能组成 `OPXXO`，为 `活二`；或两个 `活二` 组成 `双活二` 类型等等......具体枚举如下——
+```
+enum Categorys {
+        Kill, DeadFive, LiveFour, DeadFour, LiveThree, DeadThree, LiveTwo, DeadTwo, LiveOne, DeadOne, TwoLiveTwo, AllCategorys
+    };
+```
+具体含义见下表——
+枚举名 | 含义 | 判断类型
+:---: | :---: | :---:
+Kill | 必杀棋 | OXXXXPO
+DeadFive |  | 
+LiveFour |  | 
+DeadFour |  | 
+LiveThree |  | 
+DeadThree |  | 
+LiveTwo |  |
+DeadTwo |  |
+LiveOne |  |
+DeadOne |  |
+TwoLiveTwo |  | 
+AllCategorys |  |
 ## 文件说明  
 ## Q&A  

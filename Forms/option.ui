@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Option</class>
+ <widget class="QWidget" name="Option">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>颜色设置</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>黑方棋子颜色</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="pieceAComboBox">
+       <item>
+        <property name="text">
+         <string>黑色</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>白色</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>红色</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>黄色</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>绿色</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>青色</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>蓝色</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>紫色</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>白方棋子颜色</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="pieceBComboBox">
+       <item>
+        <property name="text">
+         <string>黑色</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>白色</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>红色</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>黄色</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>绿色</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>青色</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>蓝色</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>紫色</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>其他设置</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="showPieceCheckBox">
+     <property name="text">
+      <string>显示下一步棋的位置</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="orderCheckBox">
+     <property name="text">
+      <string>显示下棋顺序</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="scoreCheckBox">
+     <property name="text">
+      <string>Debug模式：显示ai权重</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>确定</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -62,4 +62,26 @@ AllCategorys | 枚举数 | 创建数组用
 ### 选择下棋点
 计算 `scoreMap` 中的最大值，然后选出所有最大值的位置并随机挑选一个位置下棋。  
 ## 文件说明  
+* **Chess.h/.cpp**
+继承 ChessBoard 类，实现棋局对战和AI算法。  
+* **ChessBoard.h/.cpp**
+继承 Qwidget 类，实现棋盘绘制及缩放。
+* **DebugOption.h/.cpp**
+继承 QDialog 类，实现 Debug 设置窗口。
+* **Gobang.h/.cpp**
+继承 QMainWindows 类，实现游戏全局。
+* **ImportDialog.h/.cpp**
+继承 QDialog 类，实现导入窗口。
+* **MainOption.h/.cpp**
+继承 QDialog 类，实现主设置窗口。
+* **MainWidget.h/.cpp**
+继承 QWidget 类，实现游戏主窗口。
+* **NewGame.h/.cpp**
+继承 QDialog 类，实现新游戏窗口。
+* **PlayerOption.h/.cpp**
+继承 QDialog 类，实现玩家设置窗口。
+* **main.cpp**
+实现 main 函数。
+* **其他**
+Visual Studio 相关文件。
 ## Q&A  

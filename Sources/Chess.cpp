@@ -326,9 +326,9 @@ QVector<int> Chess::typesConvert(QVector<int> types, int pm)
 
     for (int i = 0; i < 4; i++)
     {
-    /* 眠一：WXPM */ 
+    /* 眠一：WXPO */ 
         // WXPM
-        if ((types[i] == WXP && (types[i + 4] >= WOOP && types[i + 4] <= OP)) || ((types[i] >= WOOP && types[i] <= OP) && types[i + 4] == WXP))
+        if ((types[i] == WXP && types[i + 4] == OP) || ( types[i] == OP && types[i + 4] == WXP))
             categorys[SleepOne] += 1;
     /* 活一：OXPM */
         // OXPM

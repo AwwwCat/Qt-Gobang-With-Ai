@@ -1,38 +1,50 @@
 #ifndef NEWGAME_H
 #define NEWGAME_H
 
-#include <QDialog>
 #include <QButtonGroup>
+#include <QDialog>
+#include <QLabel>
+#include <QLayout>
+#include <QPushButton>
+#include <QRadioButton>
+#include <QSpinBox>
+#include <QString>
 
-namespace Ui {
-class NewGame;
-}
-
+/// <summary>
+/// 
+/// </summary>
 class NewGame : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit NewGame(QDialog *parent = nullptr);
+    explicit NewGame(QWidget* parent = nullptr);
     ~NewGame();
-    Ui::NewGame *ui;
-
-public slots:
-
-
-signals:
-    void pressOK(int gameMode, int thinkTime);
-
-
-private slots:
-    void on_OKButton_clicked();
-
-
-    void on_pushButton_clicked();
 
 private:
-    QButtonGroup *buttonGroup;
+    QLabel* gamemodeLabel;
+    QLabel* timeLabel;
+    QLabel* cellNumLabel;
+    QRadioButton* PVPButton;
+    QRadioButton* PVCButton;
+    QSpinBox* thinkTimeBox;
+    QSpinBox* cellNumBox;
+    QPushButton* commitButton;
+    QPushButton* cancelButton;
+    QButtonGroup* modeButtonGroup;
 
+    QVBoxLayout* modeLayout;
+    QHBoxLayout* timeLayout;
+    QHBoxLayout* cellLayout;
+    QHBoxLayout* buttonLayout;
+    QVBoxLayout* widgetLayout;
+
+private slots:
+    void commitButtonClicked();
+    void cancelButtonClicked();
+
+signals:
+    void commitNewGameSgn(int gameMode, int thinkTime, int cellNum);
 };
 
-#endif // NEWGAME_H
+#endif // !NEWGAME_H

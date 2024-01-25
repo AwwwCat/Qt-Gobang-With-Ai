@@ -1,80 +1,79 @@
 #ifndef CHESS_H
 #define CHESS_H
 
-#define CELL_SIZE 80
-#define CELL_NUM 14
-#define START_X 50
-#define START_Y 50
-#define TopDistance 25
-#define PIECE_R 35
-#define LIANZHU_NUM 5
-
-#include <QWidget>
-#include <QPen>
+#include "../Headers/ChessBoard.h"
+#include <cmath>
+#include <QColor>
+#include <QMouseEvent>
 #include <QPainter>
 #include <QPainterPath>
 #include <QPaintEvent>
-#include <QMouseEvent>
-#include <QColor>
-#include <QTimer>
-#include <QTime>
-#include <QtGlobal>
-#include <QRandomGenerator>
-#include <QStack>
-#include <QMessageBox>
+#include <QPen>
 #include <QPushButton>
-#include <string>
-#include <cmath>
-
-enum PieceMode {
-    None, Black, White
-};
+#include <QRandomGenerator>
+#include <QResizeEvent>
+#include <QtGlobal>
+#include <QTime>
+#include <QTimer>
+#include <QVector>
+#include <QWidget>
 
 enum Gamemode {
-    Noplay, PvP, PvC
+    Noplay, PvC, PvP
 };
 
 enum SingleTypes {
-    OP, OXP, WXP, OXXP, WXXP, OXXXP, WXXXP, OXXXXP, WXXXXP
+    WP, OXP, WXP, OXXP, WXXP, OXXXP, WXXXP, OXXXXP, WXXXXP, WOOP, WOP, OP, WXOP, OXOP, WXXOP, OXXOP, WXXXOP, OXOXP
 };
 
-class Chess : public QWidget
+enum Categorys {
+    MakeKill, AliveFour, LongFive, RushFour, AliveThree, SleepThree, AliveTwo, JumpTwo, MiddleTwo, SideTwo, SleepTwo, AliveOne, SleepOne, ThreeThree, FourThree, FourFour, AllCategorys
+};
+
+class Chess : public ChessBoard
 {
     Q_OBJECT
-public:
-    explicit Chess(QWidget *parent = nullptr);
-    virtual ~Chess() {};
 
-    int pieceMode;
-    int gameMode = Noplay;
+public:
+    explicit Chess(QWidget* parent = nullptr);
+    virtual ~Chess();
+
+    bool playing = false;
     bool showPiece = true;
     bool showOrder = false;
     bool showScore = false;
-    QStack<int> chessStack;
-    QColor pieceAColor;
-    QColor pieceBColor;
 
-public slots:
-    void cleanChessboard();
-
-signals:
-    void pieceSgn(int piecemode);
-    void winnerSgn(int winner);
+    int pieceMode;
+    int gameMode = Noplay;
 
 private:
-    int direction[8][2] = {{0, 1}, {1, 1}, {1, 0}, {1, -1}, {0, -1}, {-1, -1}, {-1, 0}, {-1, 1}};
+    int direction[8][2] = { {0, 1}, {1, 1}, {1, 0}, {1, -1}, {0, -1}, {-1, -1}, {-1, 0}, {-1, 1} };
     int pieceX, pieceY;
-    int order;
-    int chessMap[CELL_NUM+1][CELL_NUM+1];
-    int chessOrder[(CELL_NUM+1)*(CELL_NUM+1)][2];
-    int scoreMap[CELL_NUM+1][CELL_NUM+1];
+    QVector<QVector<int>> scoreMap;
 
+    void paintEvent(QPaintEvent* e);
+    void mouseMoveEvent(QMouseEvent* e);
+    void mousePressEvent(QMouseEvent* e);
+
+    void chessPlaying();
+    bool lianziJudgment();
+    bool winnerJudgment();
     void AIPlay();
-    int WeightedCalculation(int types[8], int pm);
+    void AIAttack(QVector<int> categorys);
+    QVector<int> roundErgodic(int x, int y, int pm);
+    QVector<int> typesConvert(QVector<int> types, int pm);
+    int WeightedCalculation(QVector<int> types, int pm);
+    
 
-    void paintEvent(QPaintEvent *e);
-    void mouseMoveEvent(QMouseEvent *e);
-    void mousePressEvent(QMouseEvent *e);
+public slots:
+    void backMove();
+    void createNewChessMap();
+    QVector<int> saveChessMap();
+
+signals:
+    void chessPlayingDone();
+    void pieceChangedSgn();
+    void winnerSgn(int winner);
 };
 
-#endif // CHESS_H
+#endif // !CHESS_H

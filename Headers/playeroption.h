@@ -1,40 +1,60 @@
 #ifndef PLAYEROPTION_H
 #define PLAYEROPTION_H
 
+#include <QCoreApplication>
 #include <QDialog>
-#include <QString>
 #include <QFileDialog>
-
-namespace Ui {
-class PlayerOption;
-}
+#include <QLabel>
+#include <QLayout>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QString>
 
 class PlayerOption : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit PlayerOption(QWidget *parent = nullptr);
+    explicit PlayerOption(QWidget* parent = nullptr);
     ~PlayerOption();
-    Ui::PlayerOption *ui;
 
-    QString nameA = QString("Baka");
+    QString nameA = QString(QStringLiteral("Baka"));
+    QString nameB = QString(QStringLiteral("Baka"));
     QString pathA;
-    QString nameB = QString("Baka");
     QString pathB;
 
+private:
+    QLabel* ALabel;
+    QLabel* BLabel;
+    QLabel* nameALabel;
+    QLabel* nameBLabel;
+    QLabel* photoALabel;
+    QLabel* photoBLabel;
+    QLineEdit* nameAEdit;
+    QLineEdit* nameBEdit;
+    QLineEdit* pathAEdit;
+    QLineEdit* pathBEdit;
+    QPushButton* pathAButton;
+    QPushButton* pathBButton;
+    QPushButton* commitButton;
+    QPushButton* cancelButton;
+    
+    QHBoxLayout* nameALayout;
+    QHBoxLayout* nameBLayout;
+    QHBoxLayout* photoALayout;
+    QHBoxLayout* photoBLayout;
+    QHBoxLayout* buttonLayout;
+    QVBoxLayout* widgetLayout;
+
 private slots:
-    void on_OKButton_clicked();
-
-    void on_photoAButton_clicked();
-
-    void on_photoBButton_clicked();
+    void commitButtonClicked();
+    void cancelButtonClicked();
+    void pathAButtonClicked();
+    void pathBButtonClicked();
 
 signals:
-    void playerOptionSgn(QString nma, QString pha, QString nmb, QString phb);
-
-private:
-
+    void commitOptionsSgn(QString nma, QString pha, QString nmb, QString phb);
 };
 
-#endif // PLAYEROPTION_H
+#endif // !PLAYEROPTION_H
+

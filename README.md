@@ -26,11 +26,11 @@ enum SingleTypes {
 * X 代表棋；  
 * W 代表和 X 相反的棋。  
 ### 具体连子类型判断
-根据上面的算法得到棋子周边的类型，通过组合得出棋子周边真正的类型。如在一条线上 `OXP` 和 `WXXP` 能组成 `OXPXXW`，为 `死三`；或在一条线上 `OXXP` 和 `OP` 能组成 `OPXXO`，为 `活二`；或两个 `活二` 组成 `双活二` 类型等等......具体枚举如下——
+根据上面的算法得到棋子周边的类型，通过组合得出棋子周边真正的类型。如在一条线上 `OXP` 和 `WXXP` 能组成 `OXPXXW`，为 `眠三`；或在一条线上 `OXXP` 和 `OP` 能组成 `OPXXO`，为 `活二`；或两个 `活二` 组成 `三三` 类型等等......具体枚举如下——
 ```
 enum Categorys {
-        Kill, DeadFive, LiveFour, DeadFour, LiveThree, DeadThree, LiveTwo, DeadTwo, LiveOne, DeadOne, TwoLiveTwo, AllCategorys
-    };
+    MakeKill, AliveFour, LongFive, RushFour, AliveThree, SleepThree, AliveTwo, JumpTwo, MiddleTwo, SideTwo, SleepTwo, AliveOne, SleepOne, ThreeThree, FourThree, FourFour, AllCategorys
+};
 ```
 具体含义见下表——
 枚举名 | 含义 | 判断类型 
@@ -51,8 +51,9 @@ SleepOne | 眠一 | WXPM
 ThreeThree | 三三 | 两个及以上 AliveTwo 或 JumpTwo 或 MiddleTwo 或 SideTwo
 FourThree | 四三 | 两个及以上 SleepThree 和 AliveTwo 或 JumpTwo 或 MiddleTwo 或 SideTwo
 FourFour | 四四 | 两个及以上 SleepThree
-AllCategorys | 枚举数 | 创建数组用 
-其中  
+AllCategorys | 枚举数 | 创建数组用
+
+其中    
 * P, O, X, W 含义见上文；
 * M 代表 OP，WOP，WOOP。 
 ### 计算权重

@@ -1,5 +1,5 @@
 # Qt-Gobang-With-Ai  
-基于Qt框架的五子棋，带有 PvC 模式。包含了自己开发的 ai 算法。  
+这是一个基于 Qt 框架的五子棋游戏，提供了与 AI 对战的 PvC 模式，并包含了自主开发的 AI 算法。
 ## 目录  
 * [环境](https://github.com/AwwwCat/Qt-Gobang-With-Ai#%E7%8E%AF%E5%A2%83)  
 * [Ai逻辑](https://github.com/AwwwCat/Qt-Gobang-With-Ai#ai%E9%80%BB%E8%BE%91)  

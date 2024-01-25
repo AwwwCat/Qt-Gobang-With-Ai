@@ -14,10 +14,10 @@
 下载后导入项目即可。  
 ## Ai逻辑  
 ### 周边类型运算
-代码将遍历所有的空棋位，按照八个方向分别算出该空棋位各个方向最多5个棋子的类型，分别为无棋，活一，死一，活二，死二，活三，死三，活四，死四。相关定义在 `chess.h` 文件中枚举，具体内容及含意如下——  
+代码将遍历所有的空棋位，按照八个方向分别算出该空棋位各个方向最多5个棋子的类型。相关定义在 `chess.h` 文件中枚举，具体内容及含意如下——  
 ```
 enum SingleTypes {
-    OP, OXP, WXP, OXXP, WXXP, OXXXP, WXXXP, OXXXXP, WXXXXP
+    WP, OXP, WXP, OXXP, WXXP, OXXXP, WXXXP, OXXXXP, WXXXXP, WOOP, WOP, OP, WXOP, OXOP, WXXOP, OXXOP, WXXXOP, OXOXP
 };
 ```
 其中  
@@ -26,7 +26,8 @@ enum SingleTypes {
 * X 代表棋；  
 * W 代表和 X 相反的棋。  
 ### 具体连子类型判断
-根据上面的算法得到棋子周边的类型，通过组合得出棋子周边真正的类型。如在一条线上 `OXP` 和 `WXXP` 能组成 `OXPXXW`，为 `眠三`；或在一条线上 `OXXP` 和 `OP` 能组成 `OPXXO`，为 `活二`；或两个 `活二` 组成 `三三` 类型等等......具体枚举如下——
+根据上面的算法得到棋子周边的类型，通过组合得出棋子周边真正的类型。如在一条线上 `OXP` 和 `WXXP` 能组成 `OXPXXW`，为 `眠三`；或在一条线上 `OXXP` 和 `OP` 能组成 `OPXXO`，为 `活二`；或两个 `活二` 组成 `三三` 类型等等......  
+具体枚举如下——
 ```
 enum Categorys {
     MakeKill, AliveFour, LongFive, RushFour, AliveThree, SleepThree, AliveTwo, JumpTwo, MiddleTwo, SideTwo, SleepTwo, AliveOne, SleepOne, ThreeThree, FourThree, FourFour, AllCategorys
@@ -57,7 +58,7 @@ AllCategorys | 枚举数 | 创建数组用
 * P, O, X, W 含义见上文；
 * M 代表 OP，WOP，WOOP。 
 ### 计算权重
-根据对Ai的需求设置权重并使用上面的数据计算，算出该空位的权重并记录在二维数组 `int scoreMap[CELL_NUM+1][CELL_NUM+1]`。当遍历完所有空位后，数组将记录了所有空位的权重。  
+根据对Ai的需求设置权重并使用上面的数据计算，算出该空位的权重并记录。当遍历完所有空位后，数组将记录了所有空位的权重。  
 ### 选择下棋点
 计算 `scoreMap` 中的最大值，然后选出所有最大值的位置并随机挑选一个位置下棋。  
 至此Ai运算结束。  

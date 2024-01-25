@@ -33,20 +33,28 @@ enum Categorys {
     };
 ```
 具体含义见下表——
-枚举名 | 含义 | 判断类型
+枚举名 | 含义 | 判断类型 
 :---: | :---: | :---:
-Kill | 必杀棋 | OXXXXPO
-DeadFive | 死五 | WXXPXXXO WXXPXXXW OXXPXXXW WXXXXPXO WXXXXPXW
-LiveFour | 活四 | OXXXPXO OXXPXXO
-DeadFour | 死四 | WXXXXP WXXXPXO WXXPXXO WXXXPXW
-LiveThree | 活三 | OXXXPO OXXPXO
-DeadThree | 死三 | WXXXPO WXXPXO WXPXXO
-LiveTwo | 活二 | OXXPO OXPXO
-DeadTwo | 死二 | WXXPO WXPXO WXPXW
-LiveOne | 活一 | OXPO
-DeadOne | 死一 | WXPO
-TwoLiveTwo | 双活二 | 两个及以上 LiveTwo 或 DeadThree
-AllCategorys | 枚举数 | 创建数组用
+MakeKill | 做杀 | 
+AliveFour | 活四 | OXXXXPA
+LongFive | 长五 | WXXPXXXO WXXPXXXW OXXPXXXW WXXXXPXO WXXXXPXW
+RushFour | 冲四 | WXXXXPA WXXXPXO WXXPXXO WXXXPXW OXXPXXO OXXXPXO
+AliveThree | 活三 | OXXXPM OXXPXO
+SleepThree | 眠三 | WXXPXO WXPXXO WXXXPM WXXXOPW
+AliveTwo | 活二 | OXXPM OXPXO
+JumpTwo | 跳二 | OXOXPM
+MiddleTwo | 中二 | OXOPXO
+SideTwo | 边二 | OXXOPM
+SleepTwo | 眠二 | WXPXO WPXXO WXXPO WXXPOOW WXXOPOW
+AliveOne | 活一 | OXPM
+SleepOne | 眠一 | WXPM
+ThreeThree | 三三 | 两个及以上 AliveTwo 或 JumpTwo 或 MiddleTwo 或 SideTwo
+FourThree | 四三 | 两个及以上 SleepThree 和 AliveTwo 或 JumpTwo 或 MiddleTwo 或 SideTwo
+FourFour | 四四 | 两个及以上 SleepThree
+AllCategorys | 枚举数 | 创建数组用 
+其中  
+* P, O, X, W 含义见上文；
+* M 代表 OP，WOP，WOOP。 
 ### 计算权重
 根据对Ai的需求设置权重并使用上面的数据计算，算出该空位的权重并记录在二维数组 `int scoreMap[CELL_NUM+1][CELL_NUM+1]`。当遍历完所有空位后，数组将记录了所有空位的权重。  
 ### 选择下棋点

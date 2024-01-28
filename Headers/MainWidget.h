@@ -68,7 +68,7 @@ private:
 public slots:
     void receiveNewGameSgn(int gm, int tm, int cn);
     void receiveSaveChessMapSgn();
-    void receiveMainOptionsSgn(QColor ca, QColor cb, bool nextPieceShow, bool orderShow);
+    void receiveMainOptionsSgn(QColor ca, QColor cb, QColor cbc, bool nextPieceShow, bool orderShow);
     void receivePlayerOptionsSgn(QString nma, QString pha, QString nmb, QString phb);
     void receiveDebugOptionsSgn(bool weightshow);
     void receiveImportSgn(int gameMode, int cellNum, int order, QVector<QVector<int>>chessOrder);

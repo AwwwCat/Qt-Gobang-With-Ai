@@ -240,10 +240,11 @@ void MainWidget::receiveSaveChessMapSgn()
 	file.close();
 }
 
-void MainWidget::receiveMainOptionsSgn(QColor ca, QColor cb, bool nextPieceShow, bool orderShow)
+void MainWidget::receiveMainOptionsSgn(QColor ca, QColor cb, QColor cbc, bool nextPieceShow, bool orderShow)
 {
 	chess->pieceAColor = ca;
 	chess->pieceBColor = cb;
+	chess->chessBoardColor = cbc;
 	chess->showPiece = nextPieceShow;
 	chess->showOrder = orderShow;
 }

@@ -56,9 +56,15 @@ void Chess::paintEvent(QPaintEvent* e)
     if (showOrder)
     {
         painter.setPen(QPen(QColor(255, 0, 0), 3));
+        int c = 0;
         for (int i = 0; i < pow(cellNum + 1, 2) && chessOrder[i][0] != -1; i++)
         {
+            if (c == -1)
+                painter.setPen(QPen(QColor(0, 0, 0), 3));
+            else
+                painter.setPen(QPen(QColor(255, 255, 255), 3));
             painter.drawText(chessOrder[i][0] * cellSize + startX - cellSize / 2, chessOrder[i][1] * cellSize + startY - cellSize / 2, cellSize, cellSize, Qt::AlignCenter, QString::number(i + 1));
+            c = ~c;
         }
     }
 }
@@ -327,7 +333,7 @@ QVector<int> Chess::typesConvert(QVector<int> types, int pm)
     for (int i = 0; i < 4; i++)
     {
     /* 眠一：WXPO */ 
-        // WXPM
+        // WXPO
         if ((types[i] == WXP && types[i + 4] == OP) || ( types[i] == OP && types[i + 4] == WXP))
             categorys[SleepOne] += 1;
     /* 活一：OXPM */
@@ -380,7 +386,7 @@ QVector<int> Chess::typesConvert(QVector<int> types, int pm)
         else if ((types[i] == WXXXP && (types[i + 4] >= WOOP && types[i + 4] <= OP)) || ((types[i] >= WOOP && types[i] <= OP) && types[i + 4] == WXXXP))
             categorys[SleepThree] += 1;
         // WXXXOPA
-        else if (types[i] == WXXXOP || types[i + 4] == WXXXP)
+        else if (types[i] == WXXXOP || types[i + 4] == WXXXOP)
             categorys[SleepThree] += 1;
     /* 活三：OXXXPM OXXPXO */
         // OXXPXO
@@ -451,10 +457,10 @@ int Chess::WeightedCalculation(QVector<int> categorys, int pm)
     if (pm == Black)
     {
         weight += categorys[SleepOne] * 1;
-        weight += categorys[AliveOne] * 2;
-        weight += categorys[SleepTwo] * 5;
-        weight += (categorys[AliveTwo] + categorys[JumpTwo] + categorys[MiddleTwo] + categorys[SideTwo]) * 10;
-        weight += categorys[SleepThree] * 20;
+        weight += categorys[AliveOne] * 1;
+        weight += categorys[SleepTwo] * 1;
+        weight += (categorys[AliveTwo] + categorys[JumpTwo] + categorys[MiddleTwo] + categorys[SideTwo]) * 5;
+        weight += categorys[SleepThree] * 10;
         weight += (categorys[ThreeThree] + categorys[FourFour] + categorys[FourThree]) * 100;
         weight += categorys[AliveThree] * 150;
         weight += categorys[RushFour] * 500;
@@ -463,11 +469,11 @@ int Chess::WeightedCalculation(QVector<int> categorys, int pm)
     }
     else if (pm == White)
     {
-        weight += categorys[SleepOne] * 0;
-        weight += categorys[AliveOne] * 1;
-        weight += categorys[SleepTwo] * 2;
-        weight += (categorys[AliveTwo] + categorys[JumpTwo] + categorys[MiddleTwo] + categorys[SideTwo]) * 5;
-        weight += categorys[SleepThree] * 10;
+        weight += categorys[SleepOne] * 1;
+        weight += categorys[AliveOne] * 5;
+        weight += categorys[SleepTwo] * 10;
+        weight += (categorys[AliveTwo] + categorys[JumpTwo] + categorys[MiddleTwo] + categorys[SideTwo]) * 15;
+        weight += categorys[SleepThree] * 160;
         weight += (categorys[ThreeThree] + categorys[FourFour] + categorys[FourThree]) * 120;
         weight += categorys[AliveThree] * 200;
         weight += categorys[RushFour] * 1000;

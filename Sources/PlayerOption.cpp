@@ -61,6 +61,8 @@ PlayerOption::PlayerOption(QWidget* parent) : QDialog(parent)
     this->setLayout(widgetLayout);
 
     /* Á´½ÓÐÅºÅÓë²Û */
+    connect(pathAButton, &QPushButton::clicked, this, &PlayerOption::pathAButtonClicked);
+    connect(pathBButton, &QPushButton::clicked, this, &PlayerOption::pathBButtonClicked);
     connect(commitButton, &QPushButton::clicked, this, &PlayerOption::commitButtonClicked);
     connect(cancelButton, &QPushButton::clicked, this, &PlayerOption::cancelButtonClicked);
 }
@@ -103,12 +105,12 @@ void PlayerOption::cancelButtonClicked()
 
 void PlayerOption::pathAButtonClicked()
 {
-    pathA = QFileDialog::getOpenFileName(this, "", QCoreApplication::applicationFilePath(), QStringList("*.jpg;*.png").join(";"));
+    pathA = QFileDialog::getOpenFileName(this, QStringLiteral("Ñ¡ÔñÍ¼Æ¬"), QCoreApplication::applicationFilePath(), QStringList("*.jpg;*.png").join(";"));
     pathAEdit->setText(pathA);
 }
 
 void PlayerOption::pathBButtonClicked()
 {
-    pathB = QFileDialog::getOpenFileName(this, "", QCoreApplication::applicationFilePath(), QStringList("*.jpg;*.png").join(";"));
+    pathB = QFileDialog::getOpenFileName(this, QStringLiteral("Ñ¡ÔñÍ¼Æ¬"), QCoreApplication::applicationFilePath(), QStringList("*.jpg;*.png").join(";"));
     pathBEdit->setText(pathB);
 }

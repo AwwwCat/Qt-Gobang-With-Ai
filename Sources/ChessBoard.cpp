@@ -2,9 +2,6 @@
 
 ChessBoard::ChessBoard(QWidget* parent) : QWidget(parent)
 {
-	pieceAColor = QColor(0, 0, 0, 255);
-	pieceBColor = QColor(255, 255, 255, 255);
-
     createNewChessBoard();
 }
 
@@ -30,16 +27,42 @@ void ChessBoard::loadChessMap(int order, QVector<QVector<int>> chessOrder)
 
 void ChessBoard::boardDraw(QPainter& painter)
 {
+    painter.setPen(chessBoardColor);
+    painter.setBrush(chessBoardColor);
+    int minLen = fmin(startX, startY);
+    painter.drawRect(startX - minLen, startY - minLen, cellNum * cellSize + 2 * minLen, cellNum * cellSize + 2 * minLen);
+
+    painter.setPen(QColor(182, 162, 119, 255));
+    QFont font;
+    font.setFamily("Microsoft Yahei");
+    font.setPixelSize(cellSize / 3);
+
+    painter.setFont(font);
+    for (int i = 0; i < cellNum + 1; i++)
+    {
+        painter.drawText(startX - minLen, i * cellSize + startY - cellSize / 2, minLen - 10, cellSize, Qt::AlignCenter, QString::number(i + 1));
+        painter.drawText(i * cellSize + startX - cellSize / 2, startY + cellNum * cellSize + 10, cellSize, minLen - 10, Qt::AlignCenter, QString(char(i + 65)));
+    }
+
+    painter.setBrush(QColor(182, 162, 119, 255));
+    painter.setPen(QColor(182, 162, 119, 255));
     for (int i = 0; i < cellNum + 1; i++)
     {
         painter.drawLine(startX, i * cellSize + startY, cellNum * cellSize + startX, i * cellSize + startY);
         painter.drawLine(i * cellSize + startX, startY, i * cellSize + startX, cellNum * cellSize + startY);
     }
+    
+    painter.drawRect(startX - 10, startY - 11, cellNum * cellSize + 20, 5);
+    painter.drawRect(startX - 10, startY + cellNum * cellSize + 5, cellNum * cellSize + 20, 5);
+
+    painter.drawRect(startX - 10, startY - 11, 5, cellNum * cellSize + 20);
+    painter.drawRect(startX + cellNum * cellSize + 5, startY - 10, 5, cellNum * cellSize + 20);
 }
 
 void ChessBoard::pointDraw(QPainter& painter)
 {
-    painter.setBrush(QColor(0, 0, 0, 255));
+    painter.setBrush(QColor(182, 162, 119, 255));
+    painter.setPen(QColor(182, 162, 119, 255));
     int pointR = cellSize / 10;
     if (cellNum == 4)
     {
@@ -68,7 +91,7 @@ void ChessBoard::pieceDraw(QPainter& painter)
         {
             if (order > 0 && chessOrder[order - 1][0] == i && chessOrder[order - 1][1] == j)
             {
-                painter.setPen(QPen(QColor(255, 255, 0), 3));
+                painter.setPen(QPen(QColor(255, 0, 0), 3));
                 if (chessMap[chessOrder[order - 1][0]][chessOrder[order - 1][1]] == Black)
                 {
                     painter.setBrush(pieceAColor);

@@ -25,7 +25,7 @@ public:
     int pieceR = 35;
     int lianzhuNum = 5;
 
-    QColor chessBoardColor;
+    QColor chessBoardColor = QColor(247, 230, 182, 255);
     QColor pieceAColor = QColor(0, 0, 0, 255);
     QColor pieceBColor = QColor(255, 255, 255, 255);
 

@@ -62,7 +62,7 @@ AllCategorys | 枚举数 | 创建数组用
 ### 选择下棋点
 计算 `scoreMap` 中的最大值，然后选出所有最大值的位置，并随机选择一个位置作为下棋点。。  
 ## 文件说明  
-* **define.h:**
+* **define.h:**  
 实现全局宏定义。  
 * **Chess.h/.cpp:**  
 继承 ChessBoard 类，实现棋局对战和AI算法。  

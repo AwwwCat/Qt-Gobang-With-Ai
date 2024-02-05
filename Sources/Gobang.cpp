@@ -119,13 +119,13 @@ void Gobang::debugOptionActionTriggered()
 
 void Gobang::playingMethodActionTriggered()
 {
-    QMessageBox messageBox(QMessageBox::Question, QStringLiteral("玩法说明"), QStringLiteral("你是傻逼吗五子棋不会玩？\n自己百度谢谢。"), QMessageBox::Ok);
+    QMessageBox messageBox(QMessageBox::Question, QStringLiteral("玩法说明"), QStringLiteral("双方分别使用黑白两色的棋子，下在棋盘直线与横线的交叉点上，先形成五子连珠者获胜。"), QMessageBox::Ok);
     messageBox.exec();
 }
 
 void Gobang::aboutGamesActionTriggered()
 {
-    QMessageBox messageBox(QMessageBox::Question, QStringLiteral("关于软件"), QStringLiteral("作者：我\n版本：v0.00314152653589793238"), QMessageBox::Ok);
+    QMessageBox messageBox(QMessageBox::Question, QStringLiteral("关于软件"), QStringLiteral("作者：Awwwcat<br> BUG 提交：<a href = https://github.com/AwwwCat/Qt-Gobang-With-Ai/issues>Github</a><br>版本：v") + VERSION, QMessageBox::Ok);
     messageBox.exec();
 }
 

@@ -1,6 +1,7 @@
 #ifndef PLAYEROPTION_H
 #define PLAYEROPTION_H
 
+#include "../Headers/define.h"
 #include <QCoreApplication>
 #include <QDialog>
 #include <QFileDialog>
@@ -18,8 +19,8 @@ public:
     explicit PlayerOption(QWidget* parent = nullptr);
     ~PlayerOption();
 
-    QString nameA = QString(QStringLiteral("Baka"));
-    QString nameB = QString(QStringLiteral("Baka"));
+    QString nameA = QString(DEFAULT_NAME_A);
+    QString nameB = QString(DEFAULT_NAME_B);
     QString pathA;
     QString pathB;
 

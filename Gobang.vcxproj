@@ -125,6 +125,9 @@
     <QtMoc Include="Headers\Gobang.h" />
     <QtMoc Include="Headers\ImportDialog.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Headers\define.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />

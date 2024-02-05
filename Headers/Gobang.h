@@ -1,6 +1,7 @@
 #ifndef GOBANG_H
 #define GOBANG_H
 
+#include "../Headers/define.h"
 #include "../Headers/DebugOption.h"
 #include "../Headers/ImportDialog.h"
 #include "../Headers/MainOption.h"
@@ -10,7 +11,7 @@
 #include <QAction>
 #include <QApplication>
 #include <QCoreApplication>
-#include <QDesktopWidget>  
+#include <QDesktopWidget>
 #include <QMainWindow>
 #include <QMenu>
 #include <QMenuBar>
@@ -20,30 +21,30 @@ class Gobang : public QMainWindow
     Q_OBJECT
 
 public:
-    Gobang(QWidget* parent = nullptr);
+    Gobang(QWidget *parent = nullptr);
     ~Gobang();
 
 private:
-    QMenuBar* menuBar;
-    QMenu* startMenu;
-    QMenu* optionMenu;
-    QMenu* aboutMenu;
-    QAction* newGameAction;
-    QAction* saveGameAction;
-    QAction* importGameAction;
-    QAction* mainOptionAction;
-    QAction* playerOptionAction;
-    QAction* debugOptionAction;
-    QAction* playingMethodAction;
-    QAction* aboutGamesAction;
-    QAction* backMoveAction;
+    QMenuBar *menuBar;
+    QMenu *startMenu;
+    QMenu *optionMenu;
+    QMenu *aboutMenu;
+    QAction *newGameAction;
+    QAction *saveGameAction;
+    QAction *importGameAction;
+    QAction *mainOptionAction;
+    QAction *playerOptionAction;
+    QAction *debugOptionAction;
+    QAction *playingMethodAction;
+    QAction *aboutGamesAction;
+    QAction *backMoveAction;
 
-    MainWidget* mainWidget;
-    MainOption* mainOption;
-    NewGame* newGame;
-    PlayerOption* playerOption;
-    DebugOption* debugOption;
-    ImportDialog* importDialog;
+    MainWidget *mainWidget;
+    MainOption *mainOption;
+    NewGame *newGame;
+    PlayerOption *playerOption;
+    DebugOption *debugOption;
+    ImportDialog *importDialog;
 
 public:
     void openGame();

@@ -30,11 +30,15 @@ void Chess::paintEvent(QPaintEvent* e)
     // 画将要下的棋子
     if (pieceX != -1 && pieceY != -1 && gameMode != Noplay && playing && showPiece)
     {
+        pieceAColor.setAlpha(100);
+        pieceBColor.setAlpha(100);
         if (pieceMode == Black)
             painter.setBrush(pieceAColor);
         else if (pieceMode == White)
             painter.setBrush(pieceBColor);
         painter.drawEllipse(pieceX * cellSize + startX - pieceR, pieceY * cellSize + startY - pieceR, pieceR * 2, pieceR * 2);
+        pieceAColor.setAlpha(255);
+        pieceBColor.setAlpha(255);
     }
 
     // 画棋盘上已有的棋子
@@ -55,14 +59,13 @@ void Chess::paintEvent(QPaintEvent* e)
     // 下棋顺序
     if (showOrder)
     {
-        painter.setPen(QPen(QColor(255, 0, 0), 3));
         int c = 0;
         for (int i = 0; i < pow(cellNum + 1, 2) && chessOrder[i][0] != -1; i++)
         {
             if (c == -1)
-                painter.setPen(QPen(QColor(0, 0, 0), 3));
+                painter.setPen(QPen(pieceAColor, 3));
             else
-                painter.setPen(QPen(QColor(255, 255, 255), 3));
+                painter.setPen(QPen(pieceBColor, 3));
             painter.drawText(chessOrder[i][0] * cellSize + startX - cellSize / 2, chessOrder[i][1] * cellSize + startY - cellSize / 2, cellSize, cellSize, Qt::AlignCenter, QString::number(i + 1));
             c = ~c;
         }

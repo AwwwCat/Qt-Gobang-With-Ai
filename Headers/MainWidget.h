@@ -1,6 +1,7 @@
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 
+#include "../Headers/define.h"
 #include "../Headers/Chess.h"
 #include <QCoreApplication>
 #include <QDataStream>
@@ -25,8 +26,8 @@ class MainWidget : public QWidget
     Q_OBJECT
 
 public:
-    int playTime = 30;
-    int leftTime = 30;
+    int playTime = DEFAULT_PLAY_TIME;
+    int leftTime = DEFAULT_PLAY_TIME;
 
     explicit MainWidget(QWidget* parent = nullptr);
     ~MainWidget();
@@ -68,7 +69,7 @@ private:
 public slots:
     void receiveNewGameSgn(int gm, int tm, int cn);
     void receiveSaveChessMapSgn();
-    void receiveMainOptionsSgn(QColor ca, QColor cb, QColor cbc, bool nextPieceShow, bool orderShow);
+    void receiveMainOptionsSgn(QColor ca, QColor cb, QColor cbc, QColor clc, bool nextPieceShow, bool orderShow);
     void receivePlayerOptionsSgn(QString nma, QString pha, QString nmb, QString phb);
     void receiveDebugOptionsSgn(bool weightshow);
     void receiveImportSgn(int gameMode, int cellNum, int order, QVector<QVector<int>>chessOrder);

@@ -2,15 +2,16 @@
 #define IMPORTDIALOG_H
 
 #include "../Headers/ChessBoard.h"
+#include "../Headers/define.h"
 #include <QComboBox>
 #include <QCoreApplication>
 #include <QDataStream>
+#include <QDebug>
 #include <QDialog>
 #include <QDir>
 #include <QLabel>
 #include <QLayout>
 #include <QPushButton>
-#include <QDebug>
 
 class ImportDialog : public QDialog
 {

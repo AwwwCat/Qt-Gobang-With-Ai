@@ -8,8 +8,8 @@ NewGame::NewGame(QWidget* parent) : QDialog(parent)
 
     /* 定义对象 */
     gamemodeLabel = new QLabel(QStringLiteral("请选择游戏模式："));
-    timeLabel = new QLabel(QStringLiteral("思考时间（3~99）："));
-    cellNumLabel = new QLabel(QStringLiteral("棋盘格数（5~30）："));
+    timeLabel = new QLabel(QStringLiteral("思考时间（3-99）："));
+    cellNumLabel = new QLabel(QStringLiteral("棋盘格数（5-26）："));
     PVPButton = new QRadioButton(QStringLiteral("PVP"));
     PVCButton = new QRadioButton(QStringLiteral("PVC"));
     thinkTimeBox = new QSpinBox;
@@ -26,12 +26,12 @@ NewGame::NewGame(QWidget* parent) : QDialog(parent)
 
     /* 修改标签属性 */
     PVCButton->setChecked(true);
-    thinkTimeBox->setValue(30);
+    thinkTimeBox->setValue(DEFAULT_PLAY_TIME);
     thinkTimeBox->setSuffix(QStringLiteral("秒"));
     thinkTimeBox->setRange(3, 99);
     cellNumBox->setValue(15);
     cellNumBox->setSuffix(QStringLiteral("格"));
-    cellNumBox->setRange(5, 30);
+    cellNumBox->setRange(5, 26);
 
     /* 按钮组编辑 */
     modeButtonGroup->addButton(PVCButton, 0);

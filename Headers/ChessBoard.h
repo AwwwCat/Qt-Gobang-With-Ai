@@ -1,6 +1,7 @@
 #ifndef CHESSBOARD_H
 #define CHESSBOARD_H
 
+#include "../Headers/define.h"
 #include <QColor>
 #include <QPainter>
 #include <QPainterPath>
@@ -25,9 +26,10 @@ public:
     int pieceR = 35;
     int lianzhuNum = 5;
 
-    QColor chessBoardColor = QColor(247, 230, 182, 255);
-    QColor pieceAColor = QColor(0, 0, 0, 255);
-    QColor pieceBColor = QColor(255, 255, 255, 255);
+    QColor chessBoardColor = DEFAULT_CHESS_BOARD_COLOR;
+    QColor chessLineColor = DEFAULT_CHESS_LINE_COLOR;
+    QColor pieceAColor = DEFAULT_PIECE_A_COLOR;
+    QColor pieceBColor = DEFAULT_PIECE_B_COLOR;
 
     explicit ChessBoard(QWidget* parent = nullptr);
     virtual ~ChessBoard();

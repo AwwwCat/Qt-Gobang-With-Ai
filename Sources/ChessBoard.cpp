@@ -32,7 +32,7 @@ void ChessBoard::boardDraw(QPainter& painter)
     int minLen = fmin(startX, startY);
     painter.drawRect(startX - minLen, startY - minLen, cellNum * cellSize + 2 * minLen, cellNum * cellSize + 2 * minLen);
 
-    painter.setPen(QColor(182, 162, 119, 255));
+    painter.setPen(chessLineColor);
     QFont font;
     font.setFamily("Microsoft Yahei");
     font.setPixelSize(cellSize / 3);
@@ -44,8 +44,8 @@ void ChessBoard::boardDraw(QPainter& painter)
         painter.drawText(i * cellSize + startX - cellSize / 2, startY + cellNum * cellSize + 10, cellSize, minLen - 10, Qt::AlignCenter, QString(char(i + 65)));
     }
 
-    painter.setBrush(QColor(182, 162, 119, 255));
-    painter.setPen(QColor(182, 162, 119, 255));
+    painter.setBrush(chessLineColor);
+    painter.setPen(chessLineColor);
     for (int i = 0; i < cellNum + 1; i++)
     {
         painter.drawLine(startX, i * cellSize + startY, cellNum * cellSize + startX, i * cellSize + startY);
@@ -61,8 +61,8 @@ void ChessBoard::boardDraw(QPainter& painter)
 
 void ChessBoard::pointDraw(QPainter& painter)
 {
-    painter.setBrush(QColor(182, 162, 119, 255));
-    painter.setPen(QColor(182, 162, 119, 255));
+    painter.setBrush(chessLineColor);
+    painter.setPen(chessLineColor);
     int pointR = cellSize / 10;
     if (cellNum == 4)
     {

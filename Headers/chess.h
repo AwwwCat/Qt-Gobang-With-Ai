@@ -1,6 +1,7 @@
 #ifndef CHESS_H
 #define CHESS_H
 
+#include "../Headers/define.h"
 #include "../Headers/ChessBoard.h"
 #include <cmath>
 #include <QColor>

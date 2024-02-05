@@ -1,6 +1,7 @@
 #ifndef DEBUGOPTION_H
 #define DEBUGOPTION_H
 
+#include "../Headers/define.h"
 #include <QCheckBox>
 #include <QDialog>
 #include <QLabel>

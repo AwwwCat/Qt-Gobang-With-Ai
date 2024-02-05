@@ -4,8 +4,8 @@ MainWidget::MainWidget(QWidget* parent) : QWidget(parent)
 {
 	/* 定义对象 */
 	chess = new Chess;
-	playerAName = new QLabel(QStringLiteral("[玩家姓名]"));
-	playerBName = new QLabel(QStringLiteral("[玩家姓名]"));
+	playerAName = new QLabel(DEFAULT_NAME_A);
+	playerBName = new QLabel(DEFAULT_NAME_B);
 	playerAPhoto = new QLabel(QStringLiteral("[玩家头像]"));
 	playerBPhoto = new QLabel(QStringLiteral("[玩家头像]"));
 	pieceLabel = new QLabel(QStringLiteral("现在是黑方下棋"));
@@ -240,11 +240,12 @@ void MainWidget::receiveSaveChessMapSgn()
 	file.close();
 }
 
-void MainWidget::receiveMainOptionsSgn(QColor ca, QColor cb, QColor cbc, bool nextPieceShow, bool orderShow)
+void MainWidget::receiveMainOptionsSgn(QColor ca, QColor cb, QColor cbc, QColor clc, bool nextPieceShow, bool orderShow)
 {
 	chess->pieceAColor = ca;
 	chess->pieceBColor = cb;
 	chess->chessBoardColor = cbc;
+	chess->chessLineColor = clc;
 	chess->showPiece = nextPieceShow;
 	chess->showOrder = orderShow;
 }

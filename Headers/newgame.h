@@ -1,6 +1,7 @@
 #ifndef NEWGAME_H
 #define NEWGAME_H
 
+#include "../Headers/define.h"
 #include <QButtonGroup>
 #include <QDialog>
 #include <QLabel>
@@ -10,9 +11,6 @@
 #include <QSpinBox>
 #include <QString>
 
-/// <summary>
-/// 
-/// </summary>
 class NewGame : public QDialog
 {
     Q_OBJECT

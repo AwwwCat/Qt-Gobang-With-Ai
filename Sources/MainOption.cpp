@@ -11,21 +11,25 @@ MainOption::MainOption(QWidget* parent) : QDialog(parent)
     colorALabel = new QLabel(QStringLiteral("黑方棋子颜色："));
     colorBLabel = new QLabel(QStringLiteral("白方棋子颜色："));
     chessBoardColorLabel = new QLabel(QStringLiteral("棋盘背景颜色："));
+    chessLineColorLabel = new QLabel(QStringLiteral("棋格线条颜色："));
     colorAShow = new QLabel;
     colorBShow = new QLabel;
     chessBoardColorShow = new QLabel;
+    chessLineColorShow = new QLabel;
     otherLabel = new QLabel(QStringLiteral("其他设置"));
     nextPieceShow = new QCheckBox(QStringLiteral("显示下一步棋的位置"));
     orderShow = new QCheckBox(QStringLiteral("显示下棋顺序"));
     colorAButton = new QPushButton(QStringLiteral("选择..."));
     colorBButton = new QPushButton(QStringLiteral("选择..."));
     chessBoardColorButton = new QPushButton(QStringLiteral("选择..."));
+    chessLineColorButton = new QPushButton(QStringLiteral("选择..."));
     commitButton = new QPushButton(QStringLiteral("确定"));
     cancelButton = new QPushButton(QStringLiteral("取消"));
 
     colorALayout = new QHBoxLayout;
     colorBLayout = new QHBoxLayout;
     chessBoardColorLayout = new QHBoxLayout;
+    chessLineColorLayout = new QHBoxLayout;
     buttonLayout = new QHBoxLayout;
     widgetLayout = new QVBoxLayout;
 
@@ -41,6 +45,8 @@ MainOption::MainOption(QWidget* parent) : QDialog(parent)
     colorBShow->setPalette(colorBPalette);
     chessBoardColorShow->setAutoFillBackground(true);
     chessBoardColorShow->setPalette(chessBoardColorPalette);
+    chessLineColorShow->setAutoFillBackground(true);
+    chessLineColorShow->setPalette(chessLineColorPalette);
     nextPieceShow->setChecked(true);
 
     /* 布局 */
@@ -56,6 +62,10 @@ MainOption::MainOption(QWidget* parent) : QDialog(parent)
     chessBoardColorLayout->addWidget(chessBoardColorShow);
     chessBoardColorLayout->addWidget(chessBoardColorButton);
 
+    chessLineColorLayout->addWidget(chessLineColorLabel);
+    chessLineColorLayout->addWidget(chessLineColorShow);
+    chessLineColorLayout->addWidget(chessLineColorButton);
+
     buttonLayout->addStretch(1);
     buttonLayout->addWidget(commitButton);
     buttonLayout->addWidget(cancelButton);
@@ -64,6 +74,7 @@ MainOption::MainOption(QWidget* parent) : QDialog(parent)
     widgetLayout->addLayout(colorALayout);
     widgetLayout->addLayout(colorBLayout);
     widgetLayout->addLayout(chessBoardColorLayout);
+    widgetLayout->addLayout(chessLineColorLayout);
     widgetLayout->addWidget(otherLabel);
     widgetLayout->addWidget(nextPieceShow);
     widgetLayout->addWidget(orderShow);
@@ -76,6 +87,7 @@ MainOption::MainOption(QWidget* parent) : QDialog(parent)
     connect(colorAButton, &QPushButton::clicked, this, &MainOption::colorAButtonClicked);
     connect(colorBButton, &QPushButton::clicked, this, &MainOption::colorBButtonClicked);
     connect(chessBoardColorButton, &QPushButton::clicked, this, &MainOption::chessBoardColorButtonClicked);
+    connect(chessLineColorButton, &QPushButton::clicked, this, &MainOption::chessLineColorButtonClicked);
     connect(commitButton, &QPushButton::clicked, this, &MainOption::commitButtonClicked);
     connect(cancelButton, &QPushButton::clicked, this, &MainOption::cancelButtonClicked);
 }
@@ -86,20 +98,25 @@ MainOption::~MainOption()
     delete colorALabel;
     delete colorBLabel;
     delete chessBoardColorLabel;
+    delete chessLineColorLabel;
     delete colorAShow;
     delete colorBShow;
     delete chessBoardColorShow;
+    delete chessLineColorShow;
     delete otherLabel;
     delete nextPieceShow;
     delete orderShow;
     delete colorAButton;
     delete colorBButton;
+    delete chessBoardColorButton;
+    delete chessLineColorButton;
     delete commitButton;
     delete cancelButton;
 
     delete colorALayout;
     delete colorBLayout;
     delete chessBoardColorLayout;
+    delete chessLineColorLayout;
     delete buttonLayout;
     delete widgetLayout;
 }
@@ -125,9 +142,16 @@ void MainOption::chessBoardColorButtonClicked()
     chessBoardColorShow->setPalette(chessBoardColorPalette);
 }
 
+void MainOption::chessLineColorButtonClicked()
+{
+    chessLineColor = QColorDialog::getColor(chessLineColor, this, QStringLiteral("选择颜色"));
+    chessLineColorPalette = QPalette(chessLineColor);
+    chessLineColorShow->setPalette(chessLineColorPalette);
+}
+
 void MainOption::commitButtonClicked()
 {
-    emit commitOptionsSgn(colorA, colorB, chessBoardColor, nextPieceShow->isChecked(), orderShow->isChecked());
+    emit commitOptionsSgn(colorA, colorB, chessBoardColor, chessLineColor, nextPieceShow->isChecked(), orderShow->isChecked());
     this->close();
 }
 
